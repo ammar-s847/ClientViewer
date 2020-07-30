@@ -9,3 +9,13 @@ Colours and Fonts:
     Text Font: font-family: 'Roboto', sans-serif;
 */
 
+#nav {
+    background-color: rgb(52, 88, 235);
+    text-align: center;
+    padding: 10px;
+}
+
+#nav h1 {
+    color: rgb(255, 255, 255);
+    font-family: 'Source Sans Pro', sans-serif;
+}
