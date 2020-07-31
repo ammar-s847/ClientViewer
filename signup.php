@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+    <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Google Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
         <!-- Bootstrap --><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link href="style.css" rel="stylesheet">
-        <title>ClientViewer</title>
+        <title>Sign Up | ClientViewer</title>
     </head>
     <body>
         <div id="nav" class="container-fluid">
             <div class="row">
-                <div class="col align-middle">
+                <div class="col">
 
                 </div>
                 <div class="col-6">
@@ -21,26 +21,6 @@
                     <a href="signup.php">Sign Up</a>
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-            <?php
-                include 'scripts/config.php';
-                $sql = "SELECT * FROM accounts";
-                $query = mysqli_query($conn, $sql);
-
-                if ($query -> num_rows > 0) {
-                    while ($row = $query -> fetch_assoc()) { ?>
-                        <?php echo "Name: " . $row["f_name"] . " " . $row["l_name"]; ?>
-                        <form style="display: inline-block;" action="index.php" method="POST">
-                            <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
-                        </form>
-                        <br>
-                   <?php }
-                } else {
-                    echo "0 results";
-                }
-            ?>
         </div>
 
         <!-- Bootstrap Scripts -->
