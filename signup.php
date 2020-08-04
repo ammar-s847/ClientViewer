@@ -9,18 +9,43 @@
         <title>Sign Up | ClientViewer</title>
     </head>
     <body>
-        <div id="nav" class="container-fluid">
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col-6">
-                    <h1><a href="index.php">ClientViewer</a></h1>
-                </div>
-                <div class="col">
-                    <a href="signup.php">Sign Up</a>
-                </div>
+        <header class="navbar navbar-expand navbar-dark" style="background-color: rgb(52, 88, 235);">
+            <a class="navbar-brand" href="index.php">ClientViewer</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav bd-navbar-nav flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                </ul>
             </div>
+        </header>
+
+        <style>
+            form * {
+                margin: 5px;
+            }
+
+            .container-sm {
+                margin-top: 25px;
+            }
+        </style>
+
+        <div class="container-sm" style="text-align: center;">
+            <h3>Sign Up</h3>
+
+            <form action="scripts/signup.script.php" method="post">
+                <input type="text" name="f_name" placeholder="First Name" style="width: 60%;">
+                <br>
+                <input type="text" name="l_name" placeholder="Last Name" style="width: 60%;">
+                <br>
+                <input type="text" name="email" placeholder="Email" style="width: 60%;">
+                <br>
+                <input type="password" name="password" placeholder="Password" style="width: 60%;">
+                <br>
+                <input type="password" name="conf_password" placeholder="Confirm Password" style="width: 60%;">
+                <br>
+                <input type="submit" name="signup-submit" value="Sign Up">
+            </form>
         </div>
 
         <!-- Bootstrap Scripts -->

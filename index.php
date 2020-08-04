@@ -9,39 +9,55 @@
         <title>ClientViewer</title>
     </head>
     <body>
-        <div id="nav" class="container-fluid">
-            <div class="row">
-                <div class="col align-middle">
-
-                </div>
-                <div class="col-6">
-                    <h1><a href="index.php">ClientViewer</a></h1>
-                </div>
-                <div class="col">
-                    <a href="signup.php">Sign Up</a>
-                </div>
+        <header class="navbar navbar-expand navbar-dark" style="background-color: rgb(52, 88, 235);">
+            <a class="navbar-brand" href="index.php">ClientViewer</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav bd-navbar-nav flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                </ul>
             </div>
-        </div>
 
-        <div class="container">
-            <?php
-                include 'scripts/config.php';
-                $sql = "SELECT * FROM accounts";
-                $query = mysqli_query($conn, $sql);
+            <ul class="navbar-nav ml-md-auto">
+                <?php if (isset($_SESSION['user_id'])) { ?>
+                    <li class="nav-item">
+                        <p><?php echo $_SESSION['f_name'] . ' ' . $_SESSION['l_name']; ?></p>
+                    </li>
+                <?php } ?>
+            </ul>
+        </header>
 
-                if ($query -> num_rows > 0) {
-                    while ($row = $query -> fetch_assoc()) { ?>
-                        <?php echo "Name: " . $row["f_name"] . " " . $row["l_name"]; ?>
-                        <form style="display: inline-block;" action="index.php" method="POST">
-                            <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
-                        </form>
-                        <br>
-                   <?php }
-                } else {
-                    echo "0 results";
-                }
-            ?>
-        </div>
+        <?php if (isset($_SESSION['user_id'])) { ?>
+
+            <div class="container">
+                <?php
+                    include 'scripts/config.php';
+                    $sql = "SELECT * FROM accounts";
+                    $query = mysqli_query($conn, $sql);
+
+                    if ($query -> num_rows > 0) {
+                        while ($row = $query -> fetch_assoc()) { 
+                ?>
+                            <?php echo "Name: " . $row["f_name"] . " " . $row["l_name"]; ?>
+                            <form style="display: inline-block;" action="index.php" method="POST">
+                                <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
+                            </form>
+                            <br>
+                <?php 
+                    } else {
+                        echo "Database Empty";
+                    }
+                ?>
+            </div>
+
+        <?php } else { ?>
+
+            <div class="container">
+                <a href="signup.php">Sign Up</a>
+            </div>
+
+        <?php } ?>
 
         <!-- Bootstrap Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
