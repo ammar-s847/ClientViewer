@@ -44,7 +44,7 @@
                                 <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
                             </form>
                             <br>
-                <?php 
+                        <?php }
                     } else {
                         echo "Database Empty";
                     }
