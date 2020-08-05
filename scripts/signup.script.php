@@ -10,7 +10,7 @@ if (isset($_POST['signup-submit'])) {
         trim(mysqli_real_escape_string($conn, $_POST['f_name'])),
         trim(mysqli_real_escape_string($conn, $_POST['l_name'])),
         trim(mysqli_real_escape_string($conn, $_POST['email'])),
-        $_POST['password'],
+        mysqli_real_escape_string($conn, $_POST['password']),
         $_POST['conf_password']
     );
 

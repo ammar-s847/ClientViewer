@@ -1,3 +1,11 @@
+<?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,12 +29,22 @@
 
             <ul class="navbar-nav ml-md-auto">
                 <?php if (isset($_SESSION['user_id'])) { ?>
-                    <li class="nav-item">
-                        <p><?php echo $_SESSION['f_name'] . ' ' . $_SESSION['l_name']; ?></p>
+                    <li class="nav-item active">
+                        <a style="color: white;"><?php echo $_SESSION['f_name'] . ' ' . $_SESSION['l_name']; ?></a>
                     </li>
                 <?php } ?>
             </ul>
         </header>
+
+        <style>
+            form * {
+                margin: 5px;
+            }
+
+            .container-sm {
+                margin-top: 25px;
+            }
+        </style>
 
         <?php if (isset($_SESSION['user_id'])) { ?>
 
@@ -53,8 +71,19 @@
 
         <?php } else { ?>
 
-            <div class="container">
-                <a href="signup.php">Sign Up</a>
+            <div class="container-sm" style="text-align: center;">
+                <!--<a href="signup.php">Sign Up</a>-->
+                <form action="signup.php" method="post">
+                    <input type="submit" value="Sign Up" name="signup-link">
+                </form>
+                <hr>
+                <form action="scripts/login.php" method="post">
+                    <input type="text" name="login-email" placeholder="Email">
+                    <br>
+                    <input type="password" name="login-password" placeholder="Password">
+                    <br>
+                    <input type="submit" name="login-submit" value="Log In">
+                </form>
             </div>
 
         <?php } ?>
