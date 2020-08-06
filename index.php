@@ -62,7 +62,7 @@ if (!isset($_SESSION)) {
                     <input type="text" name="add-email" placeholder="Email">
                     <input type="submit" name="add-submit" value="Add">
                 </form>
-            </div>
+            </div><br>
 
             <div class="container">
                 <?php
@@ -88,7 +88,6 @@ if (!isset($_SESSION)) {
                                         <!--<form style="display: inline-block;" action="index.php" method="POST">
                                             <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
                                         </form>-->
-                                        <br>
                                     </tr>
                                 <?php } ?>
                             </tbody>
