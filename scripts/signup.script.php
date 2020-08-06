@@ -40,7 +40,7 @@ if (isset($_POST['signup-submit'])) {
                 $user_id = uniqid();
                 $insertUser = "INSERT INTO accounts (f_name, l_name, email, password, user_id) VALUES ('$input[0]', '$input[1]', '$input[2]', '$hashedPassword', '$user_id')";
                 if (mysqli_query($conn, $insertUser)) {
-                    header('Location: ../signup.php?status=success');
+                    header('Location: ../index.php?status=signup-success');
                     exit();
                 } else {
                     /*

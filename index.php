@@ -27,13 +27,20 @@ if (!isset($_SESSION)) {
                 </ul>
             </div>
 
-            <ul class="navbar-nav ml-md-auto">
-                <?php if (isset($_SESSION['user_id'])) { ?>
+            <?php if (isset($_SESSION['user_id'])) { ?>
+                <ul class="navbar-nav ml-md-auto">
                     <li class="nav-item active">
-                        <a style="color: white;"><?php echo $_SESSION['f_name'] . ' ' . $_SESSION['l_name']; ?></a>
+                        <a style="color: white;">Logged in as <?php echo $_SESSION['f_name'] . ' ' . $_SESSION['l_name']; ?></a>
                     </li>
-                <?php } ?>
-            </ul>
+                </ul>
+                <ul class="navbar-nav ml-md-auto" style="padding-left: 10px;">
+                    <li class="nav-item">
+                        <form action="scripts/logout.php" method="post">
+                            <input type="submit" name="logout-submit" value="Log Out">
+                        </form>
+                    </li>
+                </ul>
+            <?php } ?>
         </header>
 
         <style>
