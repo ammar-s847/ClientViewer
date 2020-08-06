@@ -55,31 +55,52 @@ if (!isset($_SESSION)) {
 
         <?php if (isset($_SESSION['user_id'])) { ?>
 
+            <div class="container" style="margin-top: 15px; text-align: center;">
+                <form action="scripts/add.script.php" method="post">
+                    <input type="text" name="add-f_name" placeholder="First Name">
+                    <input type="text" name="add-l_name" placeholder="Last Name">
+                    <input type="text" name="add-email" placeholder="Email">
+                    <input type="submit" name="add-submit" value="Add">
+                </form>
+            </div>
+
             <div class="container">
                 <?php
                     include 'scripts/config.php';
                     $sql = "SELECT * FROM accounts";
                     $query = mysqli_query($conn, $sql);
 
-                    if ($query -> num_rows > 0) {
-                        while ($row = $query -> fetch_assoc()) { 
-                ?>
-                            <?php echo "Name: " . $row["f_name"] . " " . $row["l_name"]; ?>
-                            <form style="display: inline-block;" action="index.php" method="POST">
-                                <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
-                            </form>
-                            <br>
-                        <?php }
-                    } else {
+                    if ($query -> num_rows > 0) { ?>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td><b>First Name</b></td>
+                                    <td><b>Last Name</b></td>
+                                    <td><b>Email</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row = $query -> fetch_assoc()) { ?>
+                                    <tr>
+                                        <td><?php echo $row['f_name']; ?></td>
+                                        <td><?php echo $row['l_name']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
+                                        <!--<form style="display: inline-block;" action="index.php" method="POST">
+                                            <button name="delete-number" value="<?php echo $row['user_id'] ?>">X</button>
+                                        </form>-->
+                                        <br>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php } else {
                         echo "Database Empty";
-                    }
-                ?>
+                    } ?>
             </div>
 
         <?php } else { ?>
 
             <div class="container-sm" style="text-align: center;">
-                <!--<a href="signup.php">Sign Up</a>-->
                 <form action="signup.php" method="post">
                     <input type="submit" value="Sign Up" name="signup-link">
                 </form>

@@ -43,10 +43,9 @@ if (isset($_POST['signup-submit'])) {
                     header('Location: ../index.php?status=signup-success');
                     exit();
                 } else {
-                    /*
                     header('Location: ../signup.php?status=error');
-                    exit();*/
-                    printf(mysqli_error($conn));
+                    exit();
+                    /*printf(mysqli_error($conn));*/
                 }
             }
         }
